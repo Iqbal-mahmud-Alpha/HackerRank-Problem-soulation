@@ -1,0 +1,110 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define faster         ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define mem(a,b)       memset(a,b,sizeof(a))
+#define all(a)         a.begin(),a.end()
+#define Sort(x)        sort(x.begin(),x.end())
+#define Reverse(x)     reverse(x.begin(),x.end())
+#define ff first
+#define ss second
+#define pr pair<ll,ll>
+#define pb push_back
+#define gcd(a,b)    __gcd(a,b)
+#define lcm(a,b)    (a*(b/gcd(a,b)))
+#define mod  1000000007
+#define num 1000008
+
+/**----data type----*/
+typedef long long int ll;
+typedef unsigned long long int llu;
+
+bool vowels(char ch)
+{
+    if (ch == 'a' or ch == 'e' or ch == 'i' or ch == 'o' or ch == 'u')
+    {
+        return true;
+    }
+    if (ch == 'A' or ch == 'E' or ch == 'I' or ch == 'O' or ch == 'U')
+    {
+        return true;
+    }
+    return false;
+}
+bool upper_case(char ch)
+{
+    if (ch >= 'A' && ch <= 'Z')
+    {
+        return true;
+    }
+    return false;
+
+}
+bool lower_case(char ch)
+{
+    if (ch >= 'a' && ch <= 'z')
+    {
+        return true;
+    }
+    return false;
+
+}
+bool fing_digit(ll n)
+{
+    ll x=n;
+    while(n)
+    {
+        ll a=n%10;
+        if(a!=0)
+        {
+            if(x%a!=0)return false;
+        }
+        n/=10;
+    }
+    return  true;
+}
+int main()
+{
+    ll tc,n,maxi=0;
+    cin>>tc;
+    stack<pr>s;
+    while(tc--)
+    {
+        cin>>n;
+        switch (n)
+        {
+        case 1:
+        {
+            ll a;
+            cin>>a;
+            if(s.empty())
+            {
+                s.push(make_pair(a,a));
+            }
+            else
+            {
+                ll compare=s.top().ss;
+                if(a>compare)
+                {
+                    s.push(make_pair(a,a));
+                }
+                else
+                {
+                    s.push(make_pair(a,compare));
+                }
+            }
+            break;
+        }
+        case 2:
+        {
+            s.pop();
+            break;
+        }
+        case 3:
+        {
+            cout<<s.top().ss<<endl;
+            break;
+        }
+        }
+    }
+}
+
