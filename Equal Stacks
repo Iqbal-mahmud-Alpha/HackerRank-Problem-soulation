@@ -1,0 +1,136 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define faster         ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define mem(a,b)       memset(a,b,sizeof(a))
+#define all(a)         a.begin(),a.end()
+#define Sort(x)        sort(x.begin(),x.end())
+#define Reverse(x,n)     reverse(x,x+n)
+#define ff first
+#define ss second
+#define pr pair<ll,ll>
+#define pb push_back
+#define gcd(a,b)    __gcd(a,b)
+#define lcm(a,b)    (a*(b/gcd(a,b)))
+#define mod  1000000007
+#define num 1000008
+
+/**----data type----*/
+typedef long long int ll;
+typedef unsigned long long int llu;
+
+bool vowels(char ch)
+{
+    if (ch == 'a' or ch == 'e' or ch == 'i' or ch == 'o' or ch == 'u')
+    {
+        return true;
+    }
+    if (ch == 'A' or ch == 'E' or ch == 'I' or ch == 'O' or ch == 'U')
+    {
+        return true;
+    }
+    return false;
+}
+bool upper_case(char ch)
+{
+    if (ch >= 'A' && ch <= 'Z')
+    {
+        return true;
+    }
+    return false;
+
+}
+bool lower_case(char ch)
+{
+    if (ch >= 'a' && ch <= 'z')
+    {
+        return true;
+    }
+    return false;
+
+}
+bool fing_digit(ll n)
+{
+    ll x=n;
+    while(n)
+    {
+        ll a=n%10;
+        if(a!=0)
+        {
+            if(x%a!=0)return false;
+        }
+        n/=10;
+    }
+    return  true;
+}
+int main()
+{
+    int n1,n2,n3;
+    cin>>n1>>n2>>n3;
+    int ar1[n1],ar2[n2],ar3[n3];
+    ll sum1=0,sum2=0,sum3=0;
+    for(int i=0; i<n1; i++)
+    {
+        cin>>ar1[i];
+        sum1+=ar1[i];
+    }
+    reverse(ar1,ar1+n1);
+    for(int i=0; i<n2; i++)
+    {
+        cin>>ar2[i];
+        sum2+=ar2[i];
+    }
+    reverse(ar2,ar2+n2);
+    for(int i=0; i<n3; i++)
+    {
+        cin>>ar3[i];
+        sum3+=ar3[i];
+    }
+    reverse(ar3,ar3+n3);
+    stack<int>s1;
+    stack<int>s2;
+    stack<int>s3;
+    for(int i=0; i<n1; i++)
+    {
+        s1.push(ar1[i]);
+    }
+    for(int i=0; i<n2; i++)
+    {
+        s2.push(ar2[i]);
+    }
+    for(int i=0; i<n3; i++)
+    {
+        s3.push(ar3[i]);
+    }
+    int m;
+//    cout<<s1.size()<<endl;
+//    cout<<s2.size()<<endl;
+//    cout<<s3.size()<<endl;
+//    int t=5;
+    while(1)
+    {
+        m=min(sum1,min(sum2,sum3));
+//        cout<<m<<endl;
+        if(m!=sum1)
+        {
+            sum1-=s1.top();
+            s1.pop();
+        }
+        if(m!=sum2)
+        {
+            sum2-=s2.top();
+            s2.pop();
+        }
+        if(m!=sum3)
+        {
+            sum3-=s3.top();
+            s3.pop();
+        }
+//        cout<<sum1<<' '<<sum2<<' '<<sum3<<endl;
+        if(sum1==m and sum2==m and sum3==m)
+        {
+            break;
+        }
+    }
+    cout<<sum1<<endl;
+}
+
