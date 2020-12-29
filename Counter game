@@ -1,0 +1,37 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define faster         ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define mem(a,b)       memset(a,b,sizeof(a))
+#define ff first
+#define ss second
+#define pr pair<ll,ll>
+#define pb push_back
+#define gcd(a,b)    __gcd(a,b)
+#define lcm(a,b)    (a*(b/gcd(a,b)))
+#define mod  1000000007
+#define num 1000008
+
+/**----data type----*/
+typedef long long int ll;
+typedef unsigned long long int llu;
+const int N=15;
+
+int main()
+{
+    ll tc,n;
+    cin>>tc;
+    while(tc--)
+    {
+        cin>>n;
+        int cnt=0;
+        n--;
+        while(n!=0)
+        {
+            if(n%2)cnt++;
+            n>>=1;
+        }
+//        cout<<cn<<endl;
+        if(cnt%2)cout<<"Louise"<< endl;
+        else cout <<"Richard"<< endl;
+    }
+}
